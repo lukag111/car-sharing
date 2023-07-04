@@ -139,7 +139,7 @@ public class Main {
 
         String input = scanner.nextLine();
         if (input.equals("0")) {
-            return;  // exit the method and go back to the previous menu
+            return;  
         }
         if (input.isEmpty()) {
             System.out.println("Invalid input!");
@@ -192,7 +192,7 @@ public class Main {
                             break;
                         }
 
-                        // Set customer's rented car ID to null
+                       
                         cus.setRentedCarId(null);
 
                         String sql = "UPDATE CUSTOMER SET RENTED_CAR_ID = NULL WHERE ID = ?";
@@ -267,8 +267,8 @@ public class Main {
             System.out.println("Invalid input!");
             return;
         }
-        rs.absolute(selectedCarIndex); // Move cursor to the selected row
-        int carId = rs.getInt("ID"); // Get the ID of the selected car
+        rs.absolute(selectedCarIndex); 
+        int carId = rs.getInt("ID");
         String carName = rs.getString("name");
         System.out.println("You rented '" + carName + "'");
 
@@ -342,7 +342,7 @@ public class Main {
                     if (f==1) break;
                     String input = scanner.nextLine();
                     if (input.equals("0")) {
-                        break;  // exit the loop and go back to the previous menu
+                        break;  
                     }
                     if (input.isEmpty()) {
                         System.out.println("Invalid input!");
@@ -390,32 +390,10 @@ public class Main {
                                     Car car = new Car(id, name1, cp.getId());
                                     cars.add(car);
                                 }
-
-
+                                
                                 break;
+                                
                             case 1:
-                                /*selectSql = "SELECT id, name FROM CAR WHERE company_id = ?";
-                                selectStatement = conn.prepareStatement(selectSql);
-                                selectStatement.setInt(1, cp.getId());
-                                resultSet = selectStatement.executeQuery();
-                                List<Car> cars1 = new ArrayList<>();
-                                while (resultSet.next()) {
-                                    int id1 = resultSet.getInt("id");
-                                    String name1 = resultSet.getString("name");
-                                    Car car = new Car(id1, name1, cp.getId());
-                                    cars1.add(car);
-                                }
-
-                                if (cars1.isEmpty()) {
-                                    System.out.println("The car list is empty!");
-                                } else {
-                                    System.out.println("Choose the car: ");
-                                    for (int i = 0; i < cars1.size(); i++) {
-                                        Car car = cars1.get(i);
-                                        System.out.println(car.getCarId() + ". " + car.getName());
-                                    }
-                                }*/
-
                                 String sql = "SELECT * FROM CAR WHERE COMPANY_ID = ?";
                                 PreparedStatement pstmt = conn.prepareStatement(sql);
                                 pstmt.setInt(1, cp.getId());
